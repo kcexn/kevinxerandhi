@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  collapsed = false;
+  collapsed = true;
+
+  toggleCollapse() {
+    this.collapsed = !this.collapsed;
+  }
+  
 }
