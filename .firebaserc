@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "kxe-wedding-dev-staging",
+    "prod": "kxe-wedding-prod"
+  }
+}
