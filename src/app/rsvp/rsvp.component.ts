@@ -15,7 +15,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
   childrenSubscription: Subscription;
 
 // To synchronize the DOM with the viewModel
-  accepted = false;
+  accepted: boolean;
   hasDietaryRestrictions = false;
   isBringingChildren = false;
   numberOfChildren: number;
@@ -65,7 +65,9 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
         this.isBringingChildren = false;
         this.numberOfChildren = undefined;
-        this.rsvpForm.get('acceptedGroup.isBringingChildrenCheckbox').setValue(false);
+        if (this.accepted === true) {
+          this.rsvpForm.get('acceptedGroup.isBringingChildrenCheckbox').setValue(false);
+        }
         try {
           this.childrenSubscription.unsubscribe();
         } catch (e) {
@@ -76,7 +78,9 @@ export class RsvpComponent implements OnInit, OnDestroy {
         (this.rsvpForm.get('acceptedGroup') as FormGroup).removeControl('isBringingChildrenCheckbox');
 
         this.hasDietaryRestrictions = false;
-        this.rsvpForm.get('acceptedGroup.dietaryRestrictionsCheckbox').setValue(false);
+        if (this.accepted === true){
+          this.rsvpForm.get('acceptedGroup.dietaryRestrictionsCheckbox').setValue(false);
+        }
         try {
           this.dietarySubscription.unsubscribe();
         } catch (e) {
