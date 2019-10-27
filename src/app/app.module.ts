@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 declare var Hammer: any;
@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { LocationComponent } from './location/location.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { RsvpComponent } from './rsvp/rsvp.component';
+
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides: any = {
@@ -38,14 +40,16 @@ export class MyHammerConfig extends HammerGestureConfig {
   declarations: [
     AppComponent,
     InvitationComponent,
-    LocationComponent
+    LocationComponent,
+    RsvpComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule
   ],
   providers: [
     {
