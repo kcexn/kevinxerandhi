@@ -5,7 +5,14 @@
                 RSVP
             </div>
             <div class="card-body">
-                <form [formGroup]="rsvpForm">
+                <div 
+                    class="spinner-border text-primary mx-auto d-block" 
+                    role="status" 
+                    style="width: 6rem; height: 6rem;"
+                    *ngIf="submitting">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <form [formGroup]="rsvpForm" *ngIf="!submitting">
                     <div class="form-group">
                         <label for="name">
                             Name: (*)
@@ -82,12 +89,12 @@
                                     name="DietaryRestrictions" 
                                     cols="30" 
                                     rows="3"
-                                    formControlName="dietary-restrictions"
+                                    formControlName="dietaryRestrictions"
                                     class="form-control"
                                     ></textarea>
                                 <span 
                                     class="help-block"
-                                    *ngIf="!rsvpForm.get('acceptedGroup.dietary-restrictions').valid && rsvpForm.get('acceptedGroup.dietary-restrictions').touched"
+                                    *ngIf="!rsvpForm.get('acceptedGroup.dietaryRestrictions').valid && rsvpForm.get('acceptedGroup.dietaryRestrictions').touched"
                                     >Please list any dietary restrictions</span>
                             </div>
                         </div>
@@ -163,8 +170,19 @@
                         class="btn btn-primary" 
                         type="submit"
                         [disabled]="!rsvpForm.valid"
-                        >Submit</button>
+                        (click)="onSubmit()"
+                        >Submit
+                    </button>
                 </form>
+                <div class="row">
+                    <div class="col">
+                            <span 
+                            class="help-block text-danger"
+                            *ngIf="submissionError"
+                            >There's been an error submitting your RSVP. Please contact us at: 
+                            <a class="text-danger" href="mailto:kevinxerandhi@gmail.com">kevinxerandhi@gmail.com</a></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

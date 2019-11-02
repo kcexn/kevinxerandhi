@@ -1,0 +1,26 @@
+service cloud.firestore {
+	match /databases/{database}/documents {
+    match /Guests/{guest} {
+    		allow create: if false;
+        allow update: if hasTimestamp() && !isLocked();
+        allow read: if false;
+    }
+
+    // function isMine() {
+    //   return request.resource.id == request.auth.uid;
+    // }
+    function hasTimestamp() {
+      return request.resource.data.timestamp == request.time;
+    }
+    // function isTimed() {
+    // 	return exists(/databases/$(database)/documents/Users/$(request.auth.uid))
+    // }
+    function isLocked() {
+    	return request.time > resource.data.timestamp;
+    }
+    // function isCalm() {
+    //   return (getAfter(/databases/$(database)/documents/Users/$(request.auth.uid)).data.timestamp
+    //             >= get(/databases/$(database)/documents/Users/$(request.auth.uid)).data.timestamp + duration.value(500, 'ms'));
+    // }
+  }
+}
