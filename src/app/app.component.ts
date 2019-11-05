@@ -17,13 +17,4 @@ export class AppComponent {
   toggleCollapse() {
     this.collapsed = !this.collapsed;
   }
-
-  // onSubmit() {
-  //   // console.log(await this.testService.getGuest('/Guests/WjzdCxDz').toPromise());
-  //   this.testService.updateGuest('/Guests/WjzdCxDz', {
-  //     name: 'Kevin',
-  //     email: 'test@test.com.au'
-  //   } as Partial<GuestRSVP>);
-  // }
-
 }

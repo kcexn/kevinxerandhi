@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-4">
     <div class="col-md-6 col-sm-12 text-center mx-auto">
-      <h1>Kevin & Erandhi</h1>
+      <h1>Wedding Admin Portal</h1>
     </div>
   </div>
 
@@ -21,29 +21,21 @@
                     #rlaInvitation="routerLinkActive"
                   >
                     <a class="nav-link waves-dark" mdbWavesEffect routerLink="/">
-                      Invitation 
+                      Invitations
                       <span class="sr-only">
                       {{ rlaInvitation.isActive ? '(current)' : ''}}
                       </span>
                     </a>
                   </li>
                   <li class="nav-item" 
-                    routerLinkActive="active"
-                    #rlaLocation="routerLinkActive">
-                    <a class="nav-link waves-dark" mdbWavesEffect routerLink="/location">
-                      Location 
-                      <span class="sr-only">
-                      {{ rlaLocation.isActive ? '(current)' : ''}}
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item" 
                   routerLinkActive="active"
-                  #rlaLocation="routerLinkActive">
-                  <a class="nav-link waves-dark" mdbWavesEffect routerLink="/rsvp">
-                    RSVP 
+                  [routerLinkActiveOptions]="{exact: true}"
+                  #rlaLogin="routerLinkActive"
+                >
+                  <a class="nav-link waves-dark" mdbWavesEffect routerLink="/login">
+                    Login
                     <span class="sr-only">
-                    {{ rlaLocation.isActive ? '(current)' : ''}}
+                    {{ rlaLogin.isActive ? '(current)' : ''}}
                     </span>
                   </a>
                 </li>
