@@ -2,5 +2,18 @@
   "projects": {
     "default": "kxe-wedding-dev-staging",
     "prod": "kxe-wedding-prod"
+  },
+  "targets": {
+    "kxe-wedding-dev-staging": {
+      "hosting": {
+        "invite-app": [
+          "KxE-Wedding"
+        ],
+        "admin-app": [
+          "KxE-Wedding-Admin",
+          "KxE-Wedding-Administration"
+        ]
+      }
+    }
   }
 }

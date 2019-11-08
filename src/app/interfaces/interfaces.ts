@@ -3,7 +3,7 @@ export interface GuestRSVP {
     dietaryRequirements?: string;
     children?: number[];
     isAttending: boolean;
-    willDance: string;
+    willDance?: string;
     email?: string;
     timestamp: firebase.firestore.FieldValue;
 }

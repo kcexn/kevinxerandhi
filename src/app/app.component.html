@@ -15,30 +15,30 @@
           <links class="my-n2">
               <!-- Links -->
               <ul class="navbar-nav mx-auto">
-                  <li class="nav-item" 
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}"
-                    #rlaInvitation="routerLinkActive"
-                  >
-                    <a class="nav-link waves-dark" mdbWavesEffect routerLink="/">
-                      Invitations
-                      <span class="sr-only">
-                      {{ rlaInvitation.isActive ? '(current)' : ''}}
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item" 
+                <li class="nav-item" 
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{exact: true}"
                   #rlaLogin="routerLinkActive"
                 >
-                  <a class="nav-link waves-dark" mdbWavesEffect routerLink="/login">
+                  <a class="nav-link waves-dark" mdbWavesEffect routerLink="/">
                     Login
                     <span class="sr-only">
                     {{ rlaLogin.isActive ? '(current)' : ''}}
                     </span>
                   </a>
                 </li>
+                  <li class="nav-item" 
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    #rlaInvitation="routerLinkActive"
+                  >
+                    <a class="nav-link waves-dark" mdbWavesEffect routerLink="/invitations">
+                      Invitations
+                      <span class="sr-only">
+                      {{ rlaInvitation.isActive ? '(current)' : ''}}
+                      </span>
+                    </a>
+                  </li>
               </ul>
           </links>
       </mdb-navbar>
