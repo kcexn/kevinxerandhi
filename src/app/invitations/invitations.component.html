@@ -1,9 +1,32 @@
 <div class="row pt-4">
     <div class="col-md-8 col-sm-12 mx-auto">
         <mdb-card class="py-2">
-            <h1 class="card-title ml-3 mt-3">TEST</h1>
+            <h1 class="card-title ml-3 mt-3">Guests:</h1>
             <mdb-card-body>
-                test
+                <table mdbTable>
+                    <thead>
+                        <tr>
+                            <th scope="col">Invitation ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Attendance</th>
+                            <th scope="col">Dietary Requirements</th>
+                            <th scope="col">Children</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Dance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr mdbTableCol *ngFor="let guest of guests">
+                            <td>{{guest.id}}</td>
+                            <td>{{guest.name}}</td>
+                            <td>{{guest.isAttending | booleanTransform}}</td>
+                            <td>{{guest.isAttending ? guest.dietaryRequirements : ''}}</td>
+                            <td>{{guest.isAttending ? guest.children : ''}}</td>
+                            <td>{{guest.isAttending ? guest.email : ''}}</td>
+                            <td>{{guest.isAttending ? guest.willDance: ''}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </mdb-card-body>
         </mdb-card>
     </div>

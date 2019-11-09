@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InvitationsComponent } from './invitations/invitations.component';
 import { LoginComponent } from './login/login.component';
+import { BooleanTransformPipe } from './pipes/boolean-transform.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvitationsComponent,
-    LoginComponent
+    LoginComponent,
+    BooleanTransformPipe
   ],
   imports: [
     BrowserModule,
