@@ -1,9 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ModalDirective } from 'angular-bootstrap-md';
+import { ViewChild} from '@angular/core';
 
 import { GuestRSVP } from '../interfaces/interfaces';
 import { GuestRsvpService } from '../services/guest-rsvp.service';
+
+
 
 @Component({
   selector: 'app-invitations',
@@ -14,6 +19,11 @@ export class InvitationsComponent implements OnInit, OnDestroy {
   guestSubscription: Subscription;
   guests: any[];
 
+  // Forms
+  addGuestForm: FormGroup;
+  submitting = false;
+  @ViewChild('addGuestModal', {static: true}) addGuestModal: ModalDirective;
+
   constructor(private guestService: GuestRsvpService) { }
 
   ngOnInit() {
@@ -22,6 +32,23 @@ export class InvitationsComponent implements OnInit, OnDestroy {
           return { id: doc.payload.doc.id,
                ...doc.payload.doc.data() };
         });
+    });
+
+    // Forms:
+    this.addGuestForm = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email])
+    });
+  }
+
+  addGuest() {
+    this.submitting = true;
+    this.guestService.addGuest(this.addGuestForm.value).then( () => {
+      this.addGuestForm.reset();
+      this.submitting = false;
+      setTimeout( () => {
+        this.addGuestModal.hide();
+      }, 100);
     });
   }
 
