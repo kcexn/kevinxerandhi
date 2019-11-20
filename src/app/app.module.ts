@@ -13,6 +13,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { InvitationsComponent } from './invitations/invitations.component';
 import { LoginComponent } from './login/login.component';
 import { BooleanTransformPipe } from './pipes/boolean-transform.pipe';
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BooleanTransformPipe } from './pipes/boolean-transform.pipe';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateValueAccessorModule
   ],
   providers: [
     AngularFirestore,

@@ -21,11 +21,11 @@ export class GuestRsvpService {
 
   addGuest(guest: Partial<GuestRSVP>) {
     const id = this.db.createId();
-    return this.db.doc('Guests/' + id.slice(-8)).set({
+    return { id: id.slice(-8),
+      promise: this.db.doc('Guests/' + id.slice(-8)).set({
       ...guest,
-      isAttending: false,
-      timestamp: new Date('2021-12-17T00:00:00.000000')
-    });
+      isAttending: false
+    })};
   }
 
   updateGuest(guest: string, rsvp: Partial<GuestRSVP>) {

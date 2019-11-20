@@ -7,11 +7,10 @@
     "kxe-wedding-dev-staging": {
       "hosting": {
         "invite-app": [
-          "KxE-Wedding"
+          "kxe-wedding-dev-staging"
         ],
         "admin-app": [
-          "KxE-Wedding-Admin",
-          "KxE-Wedding-Administration"
+          "kxe-wedding-admin"
         ]
       }
     }
