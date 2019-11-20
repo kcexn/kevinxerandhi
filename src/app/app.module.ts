@@ -14,13 +14,15 @@ import { InvitationsComponent } from './invitations/invitations.component';
 import { LoginComponent } from './login/login.component';
 import { BooleanTransformPipe } from './pipes/boolean-transform.pipe';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { GuestFilterPipe } from './pipes/guest-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvitationsComponent,
     LoginComponent,
-    BooleanTransformPipe
+    BooleanTransformPipe,
+    GuestFilterPipe
   ],
   imports: [
     BrowserModule,

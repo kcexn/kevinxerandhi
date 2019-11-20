@@ -1,168 +1,233 @@
 <div class="row pt-4">
-    <div class="col-md-8 col-sm-12 mx-auto">
-        <mdb-card class="py-2">
-            <h1 class="card-title ml-3 mt-3">Guests:</h1>
-            <mdb-card-body>
-                <table mdbTable>
-                    <thead>
-                        <tr>
-                            <th scope="col">Invitation ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Attendance</th>
-                            <th scope="col">Dietary Requirements</th>
-                            <th scope="col">Children</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Dance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr mdbTableCol *ngFor="let guest of guests">
-                            <td>{{guest.id}}</td>
-                            <td>{{guest.name}}</td>
-                            <td>{{guest.isAttending | booleanTransform}}</td>
-                            <td>{{guest.isAttending ? guest.dietaryRequirements : ''}}</td>
-                            <td>{{guest.isAttending ? guest.children : ''}}</td>
-                            <td>{{guest.isAttending ? guest.email : ''}}</td>
-                            <td>{{guest.isAttending ? guest.willDance: ''}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </mdb-card-body>
-            <div class="card-footer mt-4">
-                <button 
-                    type="button" 
-                    mdbBtn 
-                    color="primary" 
-                    class="relative waves-light" 
-                    (click)="addGuestModal.show()" 
-                    mdbWavesEffect>
-                        Add Guest
-                </button>
-                <button 
-                    type="button" 
-                    mdbBtn 
-                    color="danger" 
-                    class="relative waves-light" 
-                    (click)="removeGuestModal.show()" 
-                    mdbWavesEffect>
-                        Remove Guest
-                </button>
-            </div>      
-        </mdb-card>
-    </div>
+  <div class="col-md-8 col-sm-12 mx-auto">
+    <mdb-card class="py-2">
+      <h1 class="card-title ml-3 mt-3">Guests:</h1>
+      <mdb-card-body>
+        <table mdbTable>
+          <thead>
+            <tr>
+              <th scope="col">
+                <div class="btn-group" mdbDropdown>
+                  <button
+                    type="button"
+                    class="waves-light btn btn-info"
+                    mdbWavesEffect
+                  >
+                    Invitation ID
+                  </button>
+                  <button
+                    type="button"
+                    mdbDropdownToggle
+                    class="dropdown-toggle dropdown-toggle-split px-2 waves-light btn btn-info"
+                    mdbWavesEffect
+                  ></button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                  </div>
+                </div>
+              </th>
+              <th scope="col">Name</th>
+              <th scope="col">Attendance</th>
+              <th scope="col">Dietary Requirements</th>
+              <th scope="col">Children</th>
+              <th scope="col">Email</th>
+              <th scope="col">Dance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let guest of guests">
+              <td>{{ guest.id }}</td>
+              <td>{{ guest.name }}</td>
+              <td>{{ guest.isAttending }}</td>
+              <td>{{ guest.isAttending ? guest.dietaryRequirements : "" }}</td>
+              <td>{{ guest.isAttending ? guest.children : "" }}</td>
+              <td>{{ guest.isAttending ? guest.email : "" }}</td>
+              <td>{{ guest.isAttending ? guest.willDance : "" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mdb-card-body>
+      <div class="card-footer mt-4">
+        <button
+          type="button"
+          mdbBtn
+          color="primary"
+          class="relative waves-light"
+          (click)="addGuestModal.show()"
+          mdbWavesEffect
+        >
+          Add Guest
+        </button>
+        <button
+          type="button"
+          mdbBtn
+          color="danger"
+          class="relative waves-light"
+          (click)="removeGuestModal.show()"
+          mdbWavesEffect
+        >
+          Remove Guest
+        </button>
+      </div>
+    </mdb-card>
+  </div>
 </div>
 
-<div mdbModal #addGuestModal="mdbModal" class="modal fade" role="dialog" aria-labelledby="addGuestModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="addGuestModal.hide()">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title w-100" id="myModalLabel">Add Guest</h4>
-            </div>
-            <div class="modal-body">
-                <div 
-                    class="spinner-border text-primary d-block mx-auto" 
-                    role="status" 
-                    style="width: 8rem; height: 8rem"
-                    *ngIf="submitting">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <form [formGroup]="addGuestForm" *ngIf="!submitting">
-                    <div class="form-group">
-                        <label for="email">
-                            Email:
-                        </label>
-                        <input type="email" class="form-control" formControlName="email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">
-                            Name:
-                        </label>
-                        <input type="name" class="form-control" formControlName="name">
-                    </div>
-
-                    <div class="md-form">
-                        <input type="date" id="input" class="form-control pt-4" mdbInput formControlName="timestamp" useValueAsDate>
-                        <label class="mt-4" for="input">Choose the RSVP date</label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="addGuestModal.hide()" mdbWavesEffect>Close</button>
-                <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="addGuest()"[disabled]="!addGuestForm.valid">Add Guest</button>
-            </div>
+<div
+  mdbModal
+  #addGuestModal="mdbModal"
+  class="modal fade"
+  role="dialog"
+  aria-labelledby="addGuestModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="addGuestModal.hide()"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Add Guest</h4>
+      </div>
+      <div class="modal-body">
+        <div
+          class="spinner-border text-primary d-block mx-auto"
+          role="status"
+          style="width: 8rem; height: 8rem"
+          *ngIf="submitting"
+        >
+          <span class="sr-only">Loading...</span>
         </div>
+        <form [formGroup]="addGuestForm" *ngIf="!submitting">
+          <div class="form-group">
+            <label for="email">
+              Email:
+            </label>
+            <input type="email" class="form-control" formControlName="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">
+              Name:
+            </label>
+            <input type="name" class="form-control" formControlName="name" />
+          </div>
+
+          <div class="md-form">
+            <input
+              type="date"
+              id="input"
+              class="form-control pt-4"
+              mdbInput
+              formControlName="timestamp"
+              useValueAsDate
+            />
+            <label class="mt-4" for="input">Choose the RSVP date</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          mdbBtn
+          color="secondary"
+          class="waves-light"
+          aria-label="Close"
+          (click)="addGuestModal.hide()"
+          mdbWavesEffect
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          mdbBtn
+          color="primary"
+          class="relative waves-light"
+          mdbWavesEffect
+          (click)="addGuest()"
+          [disabled]="!addGuestForm.valid"
+        >
+          Add Guest
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 
-<div mdbModal #removeGuestModal="mdbModal" class="modal fade" role="dialog" aria-labelledby="removGuestModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="removeGuestModal.hide()">
-                    <span aria-hidden="true">x</span>
-                </button>
-                <h4 class="modal-title w-100" id="removeGuestModalLabel">Remove Guest</h4>
-            </div>
-            <div class="modal-body">
-                <div 
-                    class="spinner-border text-primary d-block mx-auto" 
-                    role="status" 
-                    style="width: 8rem; height: 8rem"
-                    *ngIf="submitting">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <form [formGroup]="removeGuestForm" *ngIf="!submitting">
-                    <div class="form-group">
-                        <label for="inviteId">
-                            Invite ID:
-                        </label>
-                        <input type="inviteId" class="form-control" formControlName="inviteId">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="removeGuestModal.hide()" mdbWavesEffect>Close</button>
-                <button type="button" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)="removeGuest()"[disabled]="!removeGuestForm.valid">Remove Guest</button>
-            </div>
+<div
+  mdbModal
+  #removeGuestModal="mdbModal"
+  class="modal fade"
+  role="dialog"
+  aria-labelledby="removGuestModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="removeGuestModal.hide()"
+        >
+          <span aria-hidden="true">x</span>
+        </button>
+        <h4 class="modal-title w-100" id="removeGuestModalLabel">
+          Remove Guest
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div
+          class="spinner-border text-primary d-block mx-auto"
+          role="status"
+          style="width: 8rem; height: 8rem"
+          *ngIf="submitting"
+        >
+          <span class="sr-only">Loading...</span>
         </div>
+        <form [formGroup]="removeGuestForm" *ngIf="!submitting">
+          <div class="form-group">
+            <label for="inviteId">
+              Invite ID:
+            </label>
+            <input
+              type="inviteId"
+              class="form-control"
+              formControlName="inviteId"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          mdbBtn
+          color="secondary"
+          class="waves-light"
+          aria-label="Close"
+          (click)="removeGuestModal.hide()"
+          mdbWavesEffect
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          mdbBtn
+          color="danger"
+          class="relative waves-light"
+          mdbWavesEffect
+          (click)="removeGuest()"
+          [disabled]="!removeGuestForm.valid"
+        >
+          Remove Guest
+        </button>
+      </div>
     </div>
-
+  </div>
 </div>
-<!-- 
-<div mdbModal #removeGuestModal="mdbModal" class="modal fade" role="dialog" aria-labelledby="removeGuestModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="removeGuestModal.hide()">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title w-100" id="myModalLabel">Remove Guest</h4>
-            </div>
-            <div class="modal-body">
-                <div 
-                    class="spinner-border text-primary d-block mx-auto" 
-                    role="status" 
-                    style="width: 8rem; height: 8rem"
-                    *ngIf="submitting">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <form [formGroup]="removeGuestForm" *ngIf="!submitting">
-                    <div class="form-group">
-                        <label for="inviteId">
-                            Invite ID:
-                        </label>
-                        <input type="inviteId" class="form-control" formControlName="inviteId">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="removeGuestModal.hide()" mdbWavesEffect>Close</button>
-                <button type="button" mdbBtn color="danger" class="relative waves-light" mdbWavesEffect (click)="removeGuest()"[disabled]="!removeGuestForm.valid">Remove Guest</button>
-            </div>
-        </div>
-    </div>
-</div> -->

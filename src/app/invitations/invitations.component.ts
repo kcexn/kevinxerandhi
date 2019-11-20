@@ -53,8 +53,7 @@ export class InvitationsComponent implements OnInit, OnDestroy {
     addGuest.promise.then(() => {
       this.guests.push({
         id: addGuest.id,
-        ...this.addGuestForm.value,
-        isAttending: false
+        ...this.addGuestForm.value
       });
       this.addGuestForm.reset();
       this.submitting = false;

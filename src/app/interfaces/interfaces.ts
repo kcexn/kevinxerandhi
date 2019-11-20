@@ -2,7 +2,7 @@ export interface GuestRSVP {
     name: string;
     dietaryRequirements?: string;
     children?: number[];
-    isAttending: boolean;
+    isAttending?: boolean;
     willDance?: string;
     email?: string;
     timestamp: firebase.firestore.FieldValue;

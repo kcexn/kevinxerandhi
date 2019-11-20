@@ -23,8 +23,7 @@ export class GuestRsvpService {
     const id = this.db.createId();
     return { id: id.slice(-8),
       promise: this.db.doc('Guests/' + id.slice(-8)).set({
-      ...guest,
-      isAttending: false
+      ...guest
     })};
   }
 
