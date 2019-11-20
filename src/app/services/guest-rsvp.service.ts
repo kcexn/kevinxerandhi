@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app'
+import * as firebase from 'firebase/app';
 
 import { GuestRSVP } from '../interfaces/interfaces';
 
@@ -26,6 +26,10 @@ export class GuestRsvpService {
       ...guest,
       isAttending: false
     })};
+  }
+
+  removeGuest(inviteId: string) {
+    return this.db.collection('Guests').doc(inviteId).delete();
   }
 
   updateGuest(guest: string, rsvp: Partial<GuestRSVP>) {

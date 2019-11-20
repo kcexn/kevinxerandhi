@@ -1,17 +1,16 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
-import { first } from "rxjs/operators";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ModalDirective } from "angular-bootstrap-md";
-import { ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ModalDirective } from 'angular-bootstrap-md';
+import { ViewChild } from '@angular/core';
 
-import { GuestRSVP } from "../interfaces/interfaces";
-import { GuestRsvpService } from "../services/guest-rsvp.service";
+import { GuestRsvpService } from '../services/guest-rsvp.service';
 
 @Component({
-  selector: "app-invitations",
-  templateUrl: "./invitations.component.html",
-  styleUrls: ["./invitations.component.scss"]
+  selector: 'app-invitations',
+  templateUrl: './invitations.component.html',
+  styleUrls: ['./invitations.component.scss']
 })
 export class InvitationsComponent implements OnInit, OnDestroy {
   guestSubscription: Subscription;
@@ -19,8 +18,10 @@ export class InvitationsComponent implements OnInit, OnDestroy {
 
   // Forms
   addGuestForm: FormGroup;
+  removeGuestForm: FormGroup;
   submitting = false;
-  @ViewChild("addGuestModal", { static: true }) addGuestModal: ModalDirective;
+  @ViewChild('addGuestModal', { static: true }) addGuestModal: ModalDirective;
+  @ViewChild('removeGuestModal', { static: true}) removeGuestModal: ModalDirective;
 
   constructor(private guestService: GuestRsvpService) {}
 
@@ -40,6 +41,10 @@ export class InvitationsComponent implements OnInit, OnDestroy {
       email: new FormControl(null, [Validators.required, Validators.email]),
       timestamp: new FormControl(null, Validators.required)
     });
+
+    this.removeGuestForm = new FormGroup({
+      inviteId: new FormControl(null, Validators.required)
+    });
   }
 
   addGuest() {
@@ -53,9 +58,26 @@ export class InvitationsComponent implements OnInit, OnDestroy {
       });
       this.addGuestForm.reset();
       this.submitting = false;
-      setTimeout(() => {
-        this.addGuestModal.hide();
-      }, 100);
+      this.addGuestModal.hide();
+    }).catch( (e) => {
+      console.log(e);
+      this.submitting = false;
+    });
+  }
+
+  removeGuest() {
+    this.submitting = true;
+    this.guestService.removeGuest(this.removeGuestForm.value.inviteId).then( () => {
+      const index = this.guests.findIndex((element) => element.id === this.removeGuestForm.value.inviteId);
+      if (index > -1) {
+        this.guests.splice(index, 1);
+      }
+      this.submitting = false;
+      this.removeGuestForm.reset();
+      this.removeGuestModal.hide();
+    }).catch( (e) => {
+      console.log(e);
+      this.submitting = false;
     });
   }
 
