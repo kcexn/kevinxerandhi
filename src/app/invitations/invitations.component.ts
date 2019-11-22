@@ -15,10 +15,12 @@ import { GuestRsvpService } from '../services/guest-rsvp.service';
 export class InvitationsComponent implements OnInit, OnDestroy {
   guestSubscription: Subscription;
   guests: any[];
+  searchString: string;
 
   // Forms
   addGuestForm: FormGroup;
   removeGuestForm: FormGroup;
+  searchGuestsForm: FormGroup;
   submitting = false;
   @ViewChild('addGuestModal', { static: true }) addGuestModal: ModalDirective;
   @ViewChild('removeGuestModal', { static: true}) removeGuestModal: ModalDirective;
@@ -44,6 +46,10 @@ export class InvitationsComponent implements OnInit, OnDestroy {
 
     this.removeGuestForm = new FormGroup({
       inviteId: new FormControl(null, Validators.required)
+    });
+
+    this.searchGuestsForm = new FormGroup({
+      nameSearchString: new FormControl(null)
     });
   }
 
@@ -78,6 +84,10 @@ export class InvitationsComponent implements OnInit, OnDestroy {
       console.log(e);
       this.submitting = false;
     });
+  }
+
+  searchGuests() {
+    this.searchString = this.searchGuestsForm.value.nameSearchString;
   }
 
   ngOnDestroy() {

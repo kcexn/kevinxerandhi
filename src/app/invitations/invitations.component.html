@@ -3,29 +3,26 @@
     <mdb-card class="py-2">
       <h1 class="card-title ml-3 mt-3">Guests:</h1>
       <mdb-card-body>
+        <form [formGroup]="searchGuestsForm">
+          <div class="form-group">
+            <label for="searchGuestsByName">Search guests by name:</label>
+            <div class="input-group w-50">
+              <input
+                id="searchGuestsByName"
+                type="text"
+                class="form-control"
+                formControlName="nameSearchString"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-primary p-2 m-0" type="button" (click)="searchGuests()">Search</button>
+              </div>
+            </div>
+          </div>
+        </form>
         <table mdbTable>
           <thead>
             <tr>
-              <th scope="col">
-                <div class="btn-group" mdbDropdown>
-                  <button
-                    type="button"
-                    class="waves-light btn btn-info"
-                    mdbWavesEffect
-                  >
-                    Invitation ID
-                  </button>
-                  <button
-                    type="button"
-                    mdbDropdownToggle
-                    class="dropdown-toggle dropdown-toggle-split px-2 waves-light btn btn-info"
-                    mdbWavesEffect
-                  ></button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                  </div>
-                </div>
-              </th>
+              <th scope="col">Invitation ID</th>
               <th scope="col">Name</th>
               <th scope="col">Attendance</th>
               <th scope="col">Dietary Requirements</th>
@@ -35,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr mdbTableCol *ngFor="let guest of guests">
+            <tr mdbTableCol *ngFor="let guest of guests | guestFilter:searchString">
               <td>{{ guest.id }}</td>
               <td>{{ guest.name }}</td>
               <td>{{ guest.isAttending }}</td>
