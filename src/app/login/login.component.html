@@ -1,58 +1,72 @@
 <div class="row pt-4">
-    <div class="col-md-6 col-sm-12 mx-auto">
-        <mdb-card class="pt-2">
-            <h2 class="card-header-title pl-3">Login</h2>
-            <mdb-card-body>
-                <div 
-                    class="spinner-border text-primary d-block mx-auto" 
-                    role="status" 
-                    style="width: 8rem; height: 8rem"
-                    *ngIf="submitting">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <form [formGroup]="loginForm" *ngIf="!submitting">
-                    <div class="form-group">
-                        <label for="email">
-                            Email:
-                        </label>
-                        <input 
-                            type="email" 
-                            formControlName="email"
-                            id="email"
-                            class="form-control">
-                        <span 
-                            class="help-block"
-                            *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched"
-                            >Please enter your email</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">
-                            Password:
-                        </label>
-                        <input 
-                            type="password" 
-                            formControlName="password"
-                            id="password"
-                            class="form-control">
-                        <span 
-                            class="help-block"
-                            *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched"
-                            >Please enter your password</span>
-                    </div>
-                    <button 
-                        class="btn btn-primary" 
-                        type="submit"
-                        [disabled]="!loginForm.valid"
-                        (click)="onSubmit()"
-                        >Submit
-                    </button>
-                </form>
-                <div class="help-block" *ngIf="submissionError && !submitting">
-                    <span class="text-danger">
-                        Check your credentials again!
-                    </span>
-                </div>
-            </mdb-card-body>
-        </mdb-card>
-    </div>
+  <div class="col-md-6 col-sm-12 mx-auto">
+    <mdb-card class="pt-2">
+      <h2 class="card-header-title pl-3">Login</h2>
+      <mdb-card-body>
+        <div
+          class="spinner-border text-primary d-block mx-auto"
+          role="status"
+          style="width: 8rem; height: 8rem"
+          *ngIf="submitting"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+        <form [formGroup]="loginForm" *ngIf="!submitting">
+          <div class="form-group">
+            <label for="email">
+              Email:
+            </label>
+            <input
+              type="email"
+              formControlName="email"
+              id="email"
+              class="form-control"
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                !loginForm.get('email').valid && loginForm.get('email').touched
+              "
+              >Please enter your email</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="password">
+              Password:
+            </label>
+            <input
+              type="password"
+              formControlName="password"
+              id="password"
+              class="form-control"
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                !loginForm.get('password').valid &&
+                loginForm.get('password').touched
+              "
+              >Please enter your password</span
+            >
+          </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+          <button class="btn btn-danger ml-3" type="button" *ngIf="isAuthenticated" (click)="logout()">
+            Logout
+          </button>
+        </form>
+        <div class="help-block" *ngIf="submissionError && !submitting">
+          <span class="text-danger">
+            Check your credentials again!
+          </span>
+        </div>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
 </div>

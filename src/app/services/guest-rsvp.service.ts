@@ -19,6 +19,10 @@ export class GuestRsvpService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
+  logout() {
+    return this.afAuth.auth.signOut();
+  }
+
   addGuest(guest: Partial<GuestRSVP>) {
     const id = this.db.createId();
     return { id: id.slice(-8),
@@ -37,5 +41,9 @@ export class GuestRsvpService {
 
   getGuests() {
     return this.db.collection('/Guests').snapshotChanges();
+  }
+
+  isAuthenticated() {
+    return this.afAuth.authState;
   }
 }

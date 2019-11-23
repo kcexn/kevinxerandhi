@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -35,7 +36,8 @@ import { GuestFilterPipe } from './pipes/guest-filter.pipe';
   ],
   providers: [
     AngularFirestore,
-    AngularFireAuth
+    AngularFireAuth,
+    AngularFireAuthGuard
   ],
   bootstrap: [AppComponent]
 })
