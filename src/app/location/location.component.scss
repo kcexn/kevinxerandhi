@@ -17,3 +17,16 @@
    animation-name: fadeIn;
  }
  
+ @media (min-width: 768px){
+  .carousel-crop {
+    max-height: 480px;
+    overflow: hidden;
+  }
+ }
+
+ @media all and (max-width: 765px) and (min-width: 1px) {
+  .carousel-crop-sm {
+    max-height: 250px;
+    overflow: hidden;
+  }
+}
