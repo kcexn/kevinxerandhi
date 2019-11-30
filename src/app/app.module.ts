@@ -26,11 +26,11 @@ import { GuestFilterPipe } from './pipes/guest-filter.pipe';
     GuestFilterPipe
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     DateValueAccessorModule
   ],

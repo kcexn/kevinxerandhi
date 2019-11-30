@@ -17,10 +17,10 @@
     "kxe-wedding-prod": {
       "hosting": {
         "invite-app": [
-          "KxE-Wedding"
+          "kxe-wedding-prod"
         ],
         "admin-app": [
-          "wedding-admin"
+          "kxe-wedding-admin-6b487"
         ]
       }
     }
