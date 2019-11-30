@@ -13,16 +13,6 @@
           "kxe-wedding-admin"
         ]
       }
-    },
-    "kxe-wedding-prod": {
-      "hosting": {
-        "invite-app": [
-          "KxE-Wedding"
-        ],
-        "admin-app": [
-          "wedding-admin"
-        ]
-      }
     }
   }
 }
