@@ -2,9 +2,9 @@ service cloud.firestore {
 	match /databases/{database}/documents {
     match /Guests/{guest} {
     		allow create: if request.auth.uid == "Kc47YUMSXqh60lsbSeCmnBTWkIi2" || request.auth.uid == "vt6ZxLijrUbPKEzAuEruiD0DXDM2";
-        allow delete: if request.auth.uid == "Kc47YUMSXqh60lsbSeCmnBTWkIi2";
+        allow delete: if request.auth.uid == "Kc47YUMSXqh60lsbSeCmnBTWkIi2" || request.auth.uid == "vt6ZxLijrUbPKEzAuEruiD0DXDM2";
         allow update: if hasTimestamp() && !isLocked();
-        allow read: if request.auth.uid == "Kc47YUMSXqh60lsbSeCmnBTWkIi2";
+        allow read: if request.auth.uid == "Kc47YUMSXqh60lsbSeCmnBTWkIi2" || request.auth.uid == "vt6ZxLijrUbPKEzAuEruiD0DXDM2";
     }
 
     // function isMine() {
