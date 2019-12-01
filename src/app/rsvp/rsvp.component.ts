@@ -214,20 +214,13 @@ export class RsvpComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    try {
+
+    if ( this.childrenSubscription ) {
       this.childrenSubscription.unsubscribe();
-    } catch (e) {
-      if (e.message === 'this.childrenSubscription is undefined') {} else {
-        throw e;
-      }
     }
 
-    try {
+    if ( this.dietarySubscription ) {
       this.dietarySubscription.unsubscribe();
-    } catch (e) {
-      if (e.message === 'this.dietarySubscription is undefined') {} else {
-        throw e;
-      }
     }
 
     this.acceptSubscription.unsubscribe();

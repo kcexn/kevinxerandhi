@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -17,7 +17,7 @@ import { LocationComponent } from './location/location.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RsvpComponent } from './rsvp/rsvp.component';
 
-
+@Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
   overrides: any = {
     pan: { direction: Hammer.DIRECTION_All },
