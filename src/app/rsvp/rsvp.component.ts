@@ -33,7 +33,6 @@ export class RsvpComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.rsvpForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
       accepts: new FormControl(null, Validators.required),
       inviteID: new FormControl(null, Validators.required),
       acceptedGroup: new FormGroup({})
@@ -185,7 +184,6 @@ export class RsvpComponent implements OnInit, OnDestroy {
   async onSubmit() {
     let guestRSVP: Partial<GuestRSVP>;
     guestRSVP = {
-      name: this.rsvpForm.value.name,
       isAttending: this.rsvpForm.value.accepts === 'accept' ? true : false,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };
