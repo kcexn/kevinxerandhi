@@ -9,10 +9,20 @@ import { GuestRSVP } from '../interfaces/interfaces';
 export class GuestRsvpService {
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
     ) {}
+
+  private _inviteID: string;
 
   updateGuest(guest: string, rsvp: Partial<GuestRSVP>) {
     return this.db.doc(guest).update(rsvp);
+  }
+
+  get inviteID() {
+    return this._inviteID;
+  }
+
+  set inviteID(inviteID: string) {
+    this._inviteID = inviteID ? inviteID : this._inviteID;
   }
 }

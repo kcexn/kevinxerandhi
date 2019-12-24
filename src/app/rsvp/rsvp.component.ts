@@ -34,7 +34,7 @@ export class RsvpComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.rsvpForm = new FormGroup({
       accepts: new FormControl(null, Validators.required),
-      inviteID: new FormControl(null, Validators.required),
+      inviteID: new FormControl( this.rsvpService.inviteID ? this.rsvpService.inviteID : null, Validators.required),
       acceptedGroup: new FormGroup({})
     });
 

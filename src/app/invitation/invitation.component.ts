@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { GuestRsvpService } from '../services/guest-rsvp.service';
 
 @Component({
   selector: 'app-invitation',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvitationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private guestRsvpService: GuestRsvpService) { }
+
+  inviteID: string;
 
   ngOnInit() {
+    this.route.queryParamMap.pipe(
+      first()
+    ).subscribe((params) => {
+      this.guestRsvpService.inviteID = params.get('inviteId');
+    });
   }
 
 }
