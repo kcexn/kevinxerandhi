@@ -16,6 +16,7 @@ import { InvitationComponent } from './invitation/invitation.component';
 import { LocationComponent } from './location/location.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RsvpComponent } from './rsvp/rsvp.component';
+import { AttireComponent } from './attire/attire.component';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -43,7 +44,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     AppComponent,
     InvitationComponent,
     LocationComponent,
-    RsvpComponent
+    RsvpComponent,
+    AttireComponent
   ],
   imports: [
     BrowserModule,
