@@ -4,12 +4,14 @@ import { InvitationComponent } from './invitation/invitation.component';
 import { LocationComponent } from './location/location.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { AttireComponent } from './attire/attire.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 const routes: Routes = [
   {path: '', component: InvitationComponent},
   {path: 'location', component: LocationComponent},
   {path: 'rsvp', component: RsvpComponent},
-  {path: 'attire', component: AttireComponent}
+  {path: 'attire', component: AttireComponent},
+  {path: 'bookings', component: BookingsComponent}
 ];
 
 @NgModule({

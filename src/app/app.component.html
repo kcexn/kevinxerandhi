@@ -8,59 +8,90 @@
   <div class="row">
     <div class="col-md-6 col-sm-12 mx-auto">
       <!--Navbar-->
-      <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light bg-light z-depth-0" [containerInside]="false">
-          <!-- Navbar brand -->
-          <mdb-navbar-brand><span style="padding: 0.01rem"></span></mdb-navbar-brand>
-          <!-- Collapsible content -->
-          <links class="my-n2">
-              <!-- Links -->
-              <ul class="navbar-nav mx-auto">
-                  <li class="nav-item" 
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}"
-                    #rlaInvitation="routerLinkActive"
-                  >
-                    <a class="nav-link waves-dark" mdbWavesEffect routerLink="/">
-                      Invitation 
-                      <span class="sr-only">
-                      {{ rlaInvitation.isActive ? '(current)' : ''}}
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item" 
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}"
-                    #rlaAttire="routerLinkActive"
-                  >
-                    <a class="nav-link waves-dark" mdbWavesEffect routerLink="/attire">
-                      Attire
-                      <span class="sr-only">
-                      {{ rlaAttire.isActive ? '(current)' : ''}}
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item" 
-                    routerLinkActive="active"
-                    #rlaLocation="routerLinkActive">
-                    <a class="nav-link waves-dark" mdbWavesEffect routerLink="/location">
-                      Location 
-                      <span class="sr-only">
-                      {{ rlaLocation.isActive ? '(current)' : ''}}
-                      </span>
-                    </a>
-                  </li>
-                  <li class="nav-item" 
-                  routerLinkActive="active"
-                  #rlaLocation="routerLinkActive">
-                  <a class="nav-link waves-dark" mdbWavesEffect routerLink="/rsvp">
-                    RSVP 
-                    <span class="sr-only">
-                    {{ rlaLocation.isActive ? '(current)' : ''}}
-                    </span>
-                  </a>
-                </li>
-              </ul>
-          </links>
+      <mdb-navbar
+        SideClass="navbar navbar-expand-lg navbar-light bg-light z-depth-0"
+        [containerInside]="false"
+      >
+        <!-- Navbar brand -->
+        <mdb-navbar-brand
+          ><span style="padding: 0.01rem"></span
+        ></mdb-navbar-brand>
+        <!-- Collapsible content -->
+        <links class="my-n2">
+          <!-- Links -->
+          <ul class="navbar-nav mx-auto">
+            <li
+              class="nav-item"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              #rlaInvitation="routerLinkActive"
+            >
+              <a class="nav-link waves-dark" mdbWavesEffect routerLink="/">
+                Invitation
+                <span class="sr-only">
+                  {{ rlaInvitation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+            <li
+              class="nav-item"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              #rlaAttire="routerLinkActive"
+            >
+              <a
+                class="nav-link waves-dark"
+                mdbWavesEffect
+                routerLink="/attire"
+              >
+                Attire
+                <span class="sr-only">
+                  {{ rlaAttire.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+            <li
+              class="nav-item"
+              routerLinkActive="active"
+              #rlaLocation="routerLinkActive"
+            >
+              <a
+                class="nav-link waves-dark"
+                mdbWavesEffect
+                routerLink="/location"
+              >
+                Location
+                <span class="sr-only">
+                  {{ rlaLocation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+            <li
+              class="nav-item"
+              routerLinkActive="active"
+              #rlaLocation="routerLinkActive"
+            >
+              <a class="nav-link waves-dark" mdbWavesEffect routerLink="/rsvp">
+                RSVP
+                <span class="sr-only">
+                  {{ rlaLocation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+            <li
+              class="nav-item"
+              routerLinkActive="active"
+              #rlaLocation="routerLinkActive"
+            >
+              <a class="nav-link waves-dark" mdbWavesEffect routerLink="/bookings">
+                Book A Cabin
+                <span class="sr-only">
+                  {{ rlaLocation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+          </ul>
+        </links>
       </mdb-navbar>
       <!--/.Navbar-->
     </div>
