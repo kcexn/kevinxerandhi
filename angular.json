@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "kevinxerandhi"
+  "defaultProject": "kevinxerandhi",
+  "cli": {
+    "analytics": "775f6978-3f6f-40c5-9612-01d6e5e3f0cb"
+  }
 }
