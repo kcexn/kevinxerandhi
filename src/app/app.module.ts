@@ -13,7 +13,6 @@ declare var Hammer: any;
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvitationComponent } from './invitation/invitation.component';
-import { LocationComponent } from './location/location.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { AttireComponent } from './attire/attire.component';
@@ -44,7 +43,6 @@ export class MyHammerConfig extends HammerGestureConfig {
   declarations: [
     AppComponent,
     InvitationComponent,
-    LocationComponent,
     RsvpComponent,
     AttireComponent,
     BookingsComponent
