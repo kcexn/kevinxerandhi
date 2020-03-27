@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { BooleanTransformPipe } from './pipes/boolean-transform.pipe';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { GuestFilterPipe } from './pipes/guest-filter.pipe';
+import { KeyvalueFilterPipe } from './pipes/keyvalue-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GuestFilterPipe } from './pipes/guest-filter.pipe';
     InvitationsComponent,
     LoginComponent,
     BooleanTransformPipe,
-    GuestFilterPipe
+    GuestFilterPipe,
+    KeyvalueFilterPipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

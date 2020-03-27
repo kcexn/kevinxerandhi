@@ -6,6 +6,7 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import { ViewChild } from '@angular/core';
 
 import { GuestRsvpService } from '../services/guest-rsvp.service';
+import { GuestRSVP } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-invitations',
@@ -16,6 +17,7 @@ export class InvitationsComponent implements OnInit, OnDestroy {
   guestSubscription: Subscription;
   guests: any[];
   searchString: string;
+  openGuest: any;
 
   // Forms
   addGuestForm: FormGroup;
@@ -23,9 +25,10 @@ export class InvitationsComponent implements OnInit, OnDestroy {
   searchGuestsForm: FormGroup;
   submitting = false;
   @ViewChild('addGuestModal', { static: true }) addGuestModal: ModalDirective;
-  @ViewChild('removeGuestModal', { static: true}) removeGuestModal: ModalDirective;
+  @ViewChild('removeGuestModal', { static: true }) removeGuestModal: ModalDirective;
+  @ViewChild('guestModal', { static: true }) guestModal: ModalDirective;
 
-  constructor(private guestService: GuestRsvpService) {}
+  constructor(private guestService: GuestRsvpService) { }
 
   ngOnInit() {
     this.guestSubscription = this.guestService
@@ -33,9 +36,11 @@ export class InvitationsComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe(snap => {
         this.guests = snap.map(doc => {
-          return { id: doc.payload.doc.id, ...doc.payload.doc.data() };
+          return { id: doc.payload.doc.id, ...doc.payload.doc.data() as GuestRSVP };
         });
       });
+
+    this.openGuest = {"null": 1};
 
     // Forms:
     this.addGuestForm = new FormGroup({
@@ -64,7 +69,7 @@ export class InvitationsComponent implements OnInit, OnDestroy {
       this.addGuestForm.reset();
       this.submitting = false;
       this.addGuestModal.hide();
-    }).catch( (e) => {
+    }).catch((e) => {
       console.log(e);
       this.submitting = false;
     });
@@ -72,7 +77,7 @@ export class InvitationsComponent implements OnInit, OnDestroy {
 
   removeGuest() {
     this.submitting = true;
-    this.guestService.removeGuest(this.removeGuestForm.value.inviteId).then( () => {
+    this.guestService.removeGuest(this.removeGuestForm.value.inviteId).then(() => {
       const index = this.guests.findIndex((element) => element.id === this.removeGuestForm.value.inviteId);
       if (index > -1) {
         this.guests.splice(index, 1);
@@ -80,10 +85,18 @@ export class InvitationsComponent implements OnInit, OnDestroy {
       this.submitting = false;
       this.removeGuestForm.reset();
       this.removeGuestModal.hide();
-    }).catch( (e) => {
+    }).catch((e) => {
       console.log(e);
       this.submitting = false;
     });
+  }
+
+  openGuestModal(guestID: string) {
+    const guest = this.guests.filter(guest => {
+      return guest.id === guestID;
+    });
+    this.openGuest = guest[0];
+    this.guestModal.show();
   }
 
   searchGuests() {
