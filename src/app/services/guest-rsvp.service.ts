@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/firestore';
 
 import { GuestRSVP } from '../interfaces/interfaces';
 
@@ -15,11 +16,11 @@ export class GuestRsvpService {
     ) {}
 
   login(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
   logout() {
-    return this.afAuth.auth.signOut();
+    return this.afAuth.signOut();
   }
 
   addGuest(guest: Partial<GuestRSVP>) {
