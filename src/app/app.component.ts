@@ -1,29 +1,26 @@
-import { Component } from '@angular/core';
-import { GuestRsvpService } from './services/guest-rsvp.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+// import {NavbarComponent} from 'angular-bootstrap-md';
 
-import { GuestRSVP } from './interfaces/interfaces';
+import { GuestRsvpService } from './services/guest-rsvp.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  collapsed = true;
+export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private testService: GuestRsvpService) {}
-
-  toggleCollapse() {
-    this.collapsed = !this.collapsed;
+  
+  ngOnInit() {
   }
 
-  // onSubmit() {
-  //   // console.log(await this.testService.getGuest('/Guests/WjzdCxDz').toPromise());
-  //   this.testService.updateGuest('/Guests/WjzdCxDz', {
-  //     name: 'Kevin',
-  //     email: 'test@test.com.au'
-  //   } as Partial<GuestRSVP>);
-  // }
-
+  ngAfterViewInit() {
+    // Added to fix a rendering bug in Firefox caused by the Renderer2 
+    // incorrectly calculating the element height and forcing the height
+    // of the navbar div using the style="height: <Renderer2 height>".
+    // This bug is introduced by the angular-bootstrap-md library
+    // so I don't have a lot of control over it.
+    document.getElementById('navbarCollapse').removeAttribute("style");
+  }
 }
