@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr mdbTableCol *ngFor="let guest of guests | guestFilter:searchString">
+            <tr mdbTableCol *ngFor="let guest of (guests | guestFilter:searchString)">
               <td>{{ guest.id }}</td>
               <td>{{ guest.name }}</td>
               <td><button type="button" mdbBtn color="info" class="relative waves-light"

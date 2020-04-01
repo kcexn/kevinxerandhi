@@ -62,10 +62,12 @@ export class InvitationsComponent implements OnInit, OnDestroy {
     this.submitting = true;
     const addGuest = this.guestService.addGuest(this.addGuestForm.value);
     addGuest.promise.then(() => {
-      this.guests.push({
+      const newGuests = JSON.parse(JSON.stringify(this.guests));
+      newGuests.push({
         id: addGuest.id,
         ...this.addGuestForm.value
       });
+      this.guests = newGuests;
       this.addGuestForm.reset();
       this.submitting = false;
       this.addGuestModal.hide();
@@ -80,7 +82,9 @@ export class InvitationsComponent implements OnInit, OnDestroy {
     this.guestService.removeGuest(this.removeGuestForm.value.inviteId).then(() => {
       const index = this.guests.findIndex((element) => element.id === this.removeGuestForm.value.inviteId);
       if (index > -1) {
-        this.guests.splice(index, 1);
+        const newGuests = JSON.parse(JSON.stringify(this.guests));
+        newGuests.splice(index, 1);
+        this.guests = newGuests;
       }
       this.submitting = false;
       this.removeGuestForm.reset();
