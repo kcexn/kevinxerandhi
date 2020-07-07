@@ -18,46 +18,57 @@
         </mdb-navbar-brand>
         <!-- Collapsible content -->
         <!-- <div style="max-height: 1rem"> -->
-          <links class="my-n2 p-none">
-            <!-- Links -->
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-                #rlaInvitation="routerLinkActive">
-                <a class="nav-link waves-dark" routerLink="/">
-                  Invitation
-                  <span class="sr-only">
-                    {{ rlaInvitation.isActive ? "(current)" : "" }}
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item" routerLinkActive="active" #rlaLocation="routerLinkActive">
-                <a class="nav-link waves-dark" routerLink="/rsvp">
-                  RSVP
-                  <span class="sr-only">
-                    {{ rlaLocation.isActive ? "(current)" : "" }}
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item" routerLinkActive="active" #rlaLocation="routerLinkActive">
-                <a class="nav-link waves-dark" routerLink="/bookings">
-                  Book A Cabin
-                  <span class="sr-only">
-                    {{ rlaLocation.isActive ? "(current)" : "" }}
-                  </span>
-                </a>
-              </li>
+        <links class="my-n2 p-none">
+          <!-- Links -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+              #rlaInvitation="routerLinkActive">
+              <a class="nav-link waves-dark" routerLink="/">
+                Invitation
+                <span class="sr-only">
+                  {{ rlaInvitation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" #rlaLocation="routerLinkActive">
+              <a class="nav-link waves-dark" routerLink="/rsvp">
+                RSVP
+                <span class="sr-only">
+                  {{ rlaLocation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" #rlaLocation="routerLinkActive">
+              <a class="nav-link waves-dark" routerLink="/bookings">
+                Book A Cabin
+                <span class="sr-only">
+                  {{ rlaLocation.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
 
-              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-                #rlaAttire="routerLinkActive">
-                <a class="nav-link waves-dark" routerLink="/attire">
-                  Attire
-                  <span class="sr-only">
-                    {{ rlaAttire.isActive ? "(current)" : "" }}
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </links>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+              #rlaAttire="routerLinkActive">
+              <a class="nav-link waves-dark" routerLink="/attire">
+                Attire
+                <span class="sr-only">
+                  {{ rlaAttire.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+              #rlaAttire="routerLinkActive">
+              <a class="nav-link waves-dark" routerLink="/gifts">
+                Gifts
+                <span class="sr-only">
+                  {{ rlaAttire.isActive ? "(current)" : "" }}
+                </span>
+              </a>
+            </li>
+
+          </ul>
+        </links>
         <!-- </div> -->
       </mdb-navbar>
       <!--/.Navbar-->

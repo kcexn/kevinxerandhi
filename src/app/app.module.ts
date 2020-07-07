@@ -17,6 +17,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { AttireComponent } from './attire/attire.component';
 import { BookingsComponent } from './bookings/bookings.component';
+import { GiftsComponent } from './gifts/gifts.component';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -45,7 +46,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     InvitationComponent,
     RsvpComponent,
     AttireComponent,
-    BookingsComponent
+    BookingsComponent,
+    GiftsComponent
   ],
   imports: [
     BrowserModule,
