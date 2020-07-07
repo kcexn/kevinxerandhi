@@ -63,15 +63,8 @@ export class RsvpComponent implements OnInit, OnDestroy {
         );
         this.subscribeToBringingChildren();
 
-        (this.rsvpForm.get('acceptedGroup') as FormGroup).registerControl(
-          'dancing',
-           new FormControl(null)
-        );
-
         this.accepted = true;
       } else {
-
-        (this.rsvpForm.get('acceptedGroup') as FormGroup).removeControl('dancing');
 
         this.isBringingChildren = false;
         this.numberOfChildren = undefined;
@@ -195,9 +188,6 @@ export class RsvpComponent implements OnInit, OnDestroy {
     }
     if ( this.rsvpForm.value.acceptedGroup.dietaryRestrictions ) {
       guestRSVP.dietaryRequirements = this.rsvpForm.value.acceptedGroup.dietaryRestrictions;
-    }
-    if ( this.rsvpForm.value.acceptedGroup.dancing ) {
-      guestRSVP.willDance = this.rsvpForm.value.acceptedGroup.dancing;
     }
     this.submitting = true;
     const status = await this.rsvpService.updateGuest('/Guests/' + this.rsvpForm.value.inviteID, guestRSVP).catch( (e) => e );
