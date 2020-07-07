@@ -9,9 +9,6 @@
     <div class="col-md-6 col-sm-12 mx-auto">
       <!--Navbar-->
       <mdb-navbar #navbar SideClass="navbar navbar-expand-lg navbar-light bg-light z-depth-0" [containerInside]="false">
-        <!-- Span to Fix a bug in firefox where the navbar renders too thin. I think this might be because angular-md-bootstrap links render dynamically and late (i.e. not 
-          specifically after the initial paint. But maybe something like that.) -->
-        <span style="display: inline-block; padding: 0.75rem"></span>
         <!-- Navbar brand -->
         <mdb-navbar-brand class="p-none" style="display: none">
           <a href="#" class="navbar-brand"></a>
